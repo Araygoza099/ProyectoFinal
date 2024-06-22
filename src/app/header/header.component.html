@@ -1,0 +1,55 @@
+<nav class="navbar navbar-expand-xl navbar-light  " style="background-color: #18708c;">
+    <a class="navbar-brand" href="#">
+      <img src="assets/media/Logo.png" width="40%" height="auto" alt="">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto d-flex justify-content-end" style="margin-left: 30%; ">
+        <li class="nav-item">
+          <a class="nav-link" href="#" routerLink="/home" routerLinkActive="active"><mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="home"></mat-icon>
+          </a>
+        </li>
+      
+  
+        
+        <li class="nav-item">
+          <a class="nav-link" href="#" routerLink="/animales" routerLinkActive="active">Adopción</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" routerLink="/acerca" routerLinkActive="active">Acerca</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" routerLink="/tips" routerLinkActive="active">Tips</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " href="#" routerLink="/donadores" routerLinkActive="active">Donadores</a>
+        </li>
+      </ul>
+      <!-- <form class="form-inline my-2 my-lg-0 d-flex justify-content-end" style=" gap: 10px;">
+        <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+      </form> (Julio)-->
+
+      <!-- <div id="busconombre" class="form-inline my-2 my-lg-0 d-flex justify-content-end" style=" gap: 10px;">
+        <input class="form-control mr-sm-2" type="text" placeholder="Buscar" aria-label="Search" #buscarTexto (keyup.enter)="buscarUnNombre(buscarTexto.value)">
+        <button class="btn btn-outline-success my-2 my-sm-0" (click)="buscarUnNombre(buscarTexto.value)" type="button">Buscar</button>
+      </div> (Aaron)-->
+
+
+      <div id="busconombre" class="form-inline my-2 my-lg-0 search-container d-flex justify-content-end" style=" gap: 10px;">
+        <input class="form-control mr-sm-2" type="text" placeholder="Buscar" aria-label="Search" #buscarTexto (keyup.enter)="nombreBusqueda(buscarTexto.value)">
+        <button class="btn btn-outline-info my-2 my-sm-0 search-button" (click)="nombreBusqueda(buscarTexto.value)" type="button"><i class="fa-solid fa-magnifying-glass"></i></button>
+    </div>
+    </div>
+  </nav>
+
+
+    
+    <router-outlet></router-outlet> 
+    
+ 
+
+   
