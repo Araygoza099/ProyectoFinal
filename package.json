@@ -23,6 +23,7 @@
     "@types/masonry-layout": "^4.2.7",
     "boostrap": "^2.0.0",
     "bootstrap": "^5.3.3",
+    "firebase": "^10.12.2",
     "jquery": "^3.7.1",
     "masonry-layout": "^4.2.2",
     "ngx-masonry": "^14.0.1",
