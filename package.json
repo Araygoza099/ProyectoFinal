@@ -33,7 +33,7 @@
     "primeicons": "^7.0.0",
     "primeng": "^17.18.1",
     "run-parallel": "^1.2.0",
-    "rxjs": "~7.8.0",
+    "rxjs": "^6.6.7",
     "rxjs-compat": "^6.6.7",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.3"
