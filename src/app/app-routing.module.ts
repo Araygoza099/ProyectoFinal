@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AnimalesComponent } from './animales/animales.component';
 import { ReportesComponent } from './reportes/reportes.component';
 
+
 const routes: Routes = [
   { path: 'animales', component: AnimalesComponent },
   { path: 'reportes', component: ReportesComponent },
@@ -10,6 +11,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes), CommonModule],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
