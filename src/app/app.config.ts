@@ -1,16 +1,16 @@
-import { ApplicationConfig } from '@angular/core';
+import { ApplicationConfig, provideZoneChangeDetection  } from '@angular/core';
 import { provideRouter } from '@angular/router';
 
 import { Injectable } from '@angular/core';
-import { Auth, signInWithEmailAndPassword, createUserWithEmailAndPassword, 
-RecaptchaVerifier,signInWithPhoneNumber } from '@angular/fire/auth';
-import { Observable, from } from 'rxjs';
-import { FirebaseApp } from '@angular/fire/app';
-import firebase from 'firebase/compat/app'; // Import the 'firebase' namespace
-import 'firebase/compat/auth';
-
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+import { getAuth, provideAuth } from "@angular/fire/auth";
+import { provideFirebaseApp } from "@angular/fire/app";
+import {AngularFireModule} from '@angular/fire/compat';
+import {AngularFireAuthModule} from '@angular/fire/compat/auth';
 
 import { routes } from './app.routes';
+import { provideHttpClient } from '@angular/common/http';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 const firebaseConfig = {
@@ -33,3 +33,5 @@ export const appConfig: ApplicationConfig = {
   ]
   )]
   };
+
+  const app = initializeApp(firebaseConfig);
