@@ -1,5 +1,6 @@
 export interface Cliente {
-    id: number;
+    id: string;
+    uid: string;
     fecha: string;
     hora: number;
     nombre: string;
@@ -15,4 +16,5 @@ export interface Animal{
     tiempo: string;
     comportamiento: string;
     img: string;
+    tipo: string;
 }
