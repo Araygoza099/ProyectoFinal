@@ -1,6 +1,5 @@
 import { ApplicationConfig, provideZoneChangeDetection  } from '@angular/core';
 import { provideRouter } from '@angular/router';
-
 import { Injectable } from '@angular/core';
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
