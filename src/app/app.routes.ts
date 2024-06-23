@@ -26,4 +26,4 @@ export const routes: Routes = [
     { path: 'login-phone', component: LoginPhoneComponent },
     { path: 'register', component: RegisterComponent }
 
-];
+]

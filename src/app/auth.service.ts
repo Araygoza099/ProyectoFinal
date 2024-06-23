@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Auth, signInWithEmailAndPassword, createUserWithEmailAndPassword, RecaptchaVerifier,signInWithPhoneNumber } from '@angular/fire/auth';
-import { Observable } from 'rxjs/Observable'
+import { Observable } from 'rxjs'
 import { from } from 'rxjs';
 import { FirebaseApp } from '@angular/fire/app';
 import firebase from 'firebase/compat/'; // Import the 'firebase' namespace
