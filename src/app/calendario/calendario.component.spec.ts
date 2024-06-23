@@ -16,7 +16,7 @@ describe('calendarioComponent', () => {
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
-  /*Hola*/ 
+
   it('should create', () => {
     expect(component).toBeTruthy();
   });
