@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CalendarioComponent } from './calendario.component';
+import { LoginPhoneComponent } from './login-phone.component';
 
-describe('calendarioComponent', () => {
-  let component: CalendarioComponent;
-  let fixture: ComponentFixture<CalendarioComponent>;
+describe('LoginPhoneComponent', () => {
+  let component: LoginPhoneComponent;
+  let fixture: ComponentFixture<LoginPhoneComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [CalendarioComponent]
+      imports: [LoginPhoneComponent]
     })
     .compileComponents();
-    
-    fixture = TestBed.createComponent(CalendarioComponent);
+
+    fixture = TestBed.createComponent(LoginPhoneComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
