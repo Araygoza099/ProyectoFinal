@@ -23,4 +23,4 @@ export const routes: Routes = [
     { path: 'register', component: RegisterComponent },
 >>>>>>> parent of c05e13c (Funcional (Finish)?)
 
-];
+]
