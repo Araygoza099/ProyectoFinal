@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CalendarioComponent } from './calendario.component';
+import { LoginEmailComponent } from './login-email.component';
 
-describe('calendarioComponent', () => {
-  let component: CalendarioComponent;
-  let fixture: ComponentFixture<CalendarioComponent>;
+describe('LoginEmailComponent', () => {
+  let component: LoginEmailComponent;
+  let fixture: ComponentFixture<LoginEmailComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [CalendarioComponent]
+      imports: [LoginEmailComponent]
     })
     .compileComponents();
-    
-    fixture = TestBed.createComponent(CalendarioComponent);
+
+    fixture = TestBed.createComponent(LoginEmailComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
