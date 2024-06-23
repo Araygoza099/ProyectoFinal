@@ -6,11 +6,6 @@ import { SearchComponent } from './search/search.component';
 import { TipsComponent } from './tips/tips.component';
 import { AnimalesComponent } from './animales/animales.component';
 import { UnanimalComponent } from './unanimal/unanimal.component';
-import { CreateUserComponent } from './create-user/create-user.component';
-import { LoginEmailComponent } from './login-email/login-email.component';
-import { LoginPhoneComponent } from './login-phone/login-phone.component';
-import { RegisterComponent } from './register/register.component';
-
 
 export const routes: Routes = [
     {path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -21,9 +16,5 @@ export const routes: Routes = [
     {path: 'donadores', component: DonadoresComponent},
     {path: 'buscador/:nombre', component: SearchComponent},
     {path: 'animal/:id', component: UnanimalComponent},
-    { path: 'create-user', component: CreateUserComponent },
-    { path: 'login-email', component: LoginEmailComponent },
-    { path: 'login-phone', component: LoginPhoneComponent },
-    { path: 'register', component: RegisterComponent }
 
 ];

@@ -7,7 +7,6 @@ import { TipsComponent } from '../tips/tips.component';
 import {MatIconModule} from '@angular/material/icon';
 import { AnimalesComponent } from '../animales/animales.component';
 import { BusquedaService } from '../busqueda.service';
-import { RegisterComponent } from '../register/register.component';
 import { CommonModule } from '@angular/common';
 
 @Component({
