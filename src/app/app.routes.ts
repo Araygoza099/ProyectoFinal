@@ -15,12 +15,9 @@ export const routes: Routes = [
     {path: 'donadores', component: DonadoresComponent},
     {path: 'buscador/:nombre', component: SearchComponent},
     {path: 'animal/:id', component: UnanimalComponent},
-<<<<<<< HEAD
-=======
     { path: 'create-user', component: CreateUserComponent },
     { path: 'login-email', component: LoginEmailComponent },
     { path: 'login-phone', component: LoginPhoneComponent },
     { path: 'register', component: RegisterComponent },
->>>>>>> parent of c05e13c (Funcional (Finish)?)
 
 ]
