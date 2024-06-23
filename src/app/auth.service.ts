@@ -12,7 +12,7 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 })
 export class AuthService {
 
-  constructor( private firebaseAuth: Auth) { }
+  constructor( private firebaseAuth: Auth, private ftAuth: AngularFireAuth) { }
 
   login(email: string, password: string): Observable<void> {
     const promise = signInWithEmailAndPassword(this.firebaseAuth, email, password).then ( () => {});
@@ -39,5 +39,7 @@ export class AuthService {
     return from(promise);
   }
 
-  
+  isLoggedIn() {
+    return this.ftAuth.authState;
+  }
 }

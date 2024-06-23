@@ -90,7 +90,7 @@ export class LoginPhoneComponent {
           this.showSuccessAlert = true;
           this.resetForm();
           setTimeout(() => {
-            this.router.navigateByUrl('/home');
+            this.router.navigateByUrl('/login-sms');
           }, 3000);
     }
   }
