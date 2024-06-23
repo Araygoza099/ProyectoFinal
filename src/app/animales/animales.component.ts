@@ -4,6 +4,8 @@ import { AnimalService } from '../shared/animal.service';
 import { RouterLink } from '@angular/router';
 import { formatDate } from '@angular/common';
 import { CommonModule } from '@angular/common';
+import { RegistrosService } from '../registros.service';
+import { Cliente } from '../clientes/cliente.model';
 
 @Component({
   selector: 'app-animales',
@@ -18,25 +20,35 @@ export class AnimalesComponent implements OnInit {
   pastAppointments: any[] = [];
   upcomingAppointments: any[] = [];
 
-  constructor(public miservicio: AnimalService) {}
+  registros: Cliente[] = [];
+
+  uid: string = 'RIZ1jD8oZuQzSJpQpUJwAI1RjsC3';
+
+  constructor(public miservicio: AnimalService, private registroService: RegistrosService) {}
 
   ngOnInit(): void {
     this.misAnimales = this.miservicio.getAnimales();
-    this.pastAppointments = this.generatePastAppointmentsReport();
-    this.upcomingAppointments = this.generateUpcomingAppointmentsReport();
+
+    this.registroService.getRegistrosByIdusr(this.uid).subscribe(
+      appointments => {
+        const currentDate = new Date().toISOString().slice(0, 10); // Obtiene la fecha actual en formato 'YYYY-MM-DD'
+        this.pastAppointments = appointments.filter(appointment => appointment.fecha < currentDate);
+        this.upcomingAppointments = appointments.filter(appointment => appointment.fecha >= currentDate);
+      },
+      error => {
+        console.error('Error fetching appointments:', error);
+      }
+    );
+
+    this.registroService.getRegistrosByIdusr(this.uid).subscribe((registros) => {
+      console.log('Usuario:',registros);
+      this.registros = registros;
+    });
   }
 
-  generatePastAppointmentsReport(): any[] {
-    const currentDate = new Date();
-    const storedData = JSON.parse(localStorage.getItem('data') || '[]');
-    const pastAppointments = storedData.filter((appointment: any) => new Date(appointment.fecha) < currentDate);
-    return pastAppointments;
+  async deleteRegistro(id:string){
+    const response = await this.registroService.deleteRegistro(id);
   }
+
   
-  generateUpcomingAppointmentsReport(): any[] {
-    const currentDate = new Date();
-    const storedData = JSON.parse(localStorage.getItem('data') || '[]');
-    const upcomingAppointments = storedData.filter((appointment: any) => new Date(appointment.fecha) >= currentDate);
-    return upcomingAppointments;
-  }
 }

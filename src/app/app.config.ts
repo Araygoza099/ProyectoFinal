@@ -6,9 +6,7 @@ import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import { getAuth, provideAuth } from "@angular/fire/auth";
 import { provideFirebaseApp } from "@angular/fire/app";
-// import {AngularFireModule} from '@angular/fire/compat';
-// import {AngularFireAuthModule} from '@angular/fire/compat/auth';
-
+import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { routes } from './app.routes';
 import { provideHttpClient } from '@angular/common/http';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
@@ -29,7 +27,7 @@ export const appConfig: ApplicationConfig = {
   provideHttpClient(),provideRouter(routes), provideAnimationsAsync(), (
   [
   provideFirebaseApp(() => initializeApp(firebaseConfig)),
-  provideAuth(() => getAuth()),
+  provideAuth(() => getAuth()), provideFirestore(() => getFirestore())
   ]
   )]
   };
