@@ -13,7 +13,7 @@ import { RegisterComponent } from './register/register.component';
 
 
 export const routes: Routes = [
-    {path: '**', redirectTo: '/home', pathMatch: 'full'},
+    {path: '', redirectTo: '/home', pathMatch: 'full'},
     {path: 'home', component: HomeComponent},
     {path: 'animales', component: AnimalesComponent},
     {path: 'acerca', component: AcercaComponent},
@@ -24,6 +24,6 @@ export const routes: Routes = [
     { path: 'create-user', component: CreateUserComponent },
     { path: 'login-email', component: LoginEmailComponent },
     { path: 'login-phone', component: LoginPhoneComponent },
-    { path: 'register', component: RegisterComponent },
+    { path: 'register', component: RegisterComponent }
 
 ];

@@ -51,7 +51,7 @@ export class CreateUserComponent {
           this.confirmPassword = '';
           // Esperar 3 segundos antes de redirigir
           setTimeout(() => {
-            this.router.navigate(['/login']); // Ejemplo de ruta a la página de login
+            this.router.navigate(['/login-email']); // Ejemplo de ruta a la página de login
           }, 3000); // Tiempo en milisegundos (3 segundos)
         },
         error: (error) => {

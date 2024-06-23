@@ -15,14 +15,19 @@ import { LoginEmailComponent } from './login-email/login-email.component';
 import { LoginPhoneComponent } from './login-phone/login-phone.component';
 import { RegisterComponent } from './register/register.component';
 
-
 const routes: Routes = [
   { path: 'animales', component: AnimalesComponent },
   { path: 'reportes', component: ReportesComponent },
+  { path: 'create-user', component: CreateUserComponent },
+    { path: 'login-email', component: LoginEmailComponent },
+    { path: 'login-phone', component: LoginPhoneComponent },
+    { path: 'register', component: RegisterComponent }
+
+
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes), CommonModule],
+  imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

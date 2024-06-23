@@ -47,7 +47,6 @@ export class LoginEmailComponent {
           this.showSuccessAlert = true;
           this.loggeado = true; // establecer loggeado como true
           this.resetForm();
-          this.router.navigate(['/login-phone']);
           setTimeout(() => {
             this.router.navigate(['/login-phone']);
           }, 120);
