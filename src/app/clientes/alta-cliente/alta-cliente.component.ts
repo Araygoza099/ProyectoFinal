@@ -65,15 +65,18 @@ export class AltaClienteComponent implements OnInit{
   
 
   async nuevoCliente() {
+    this.spinnerService.show();
     try {
       this.cliente.animal = this.animal;
       this.cliente.hora = this.horaSeleccionada;
       const response = await this.registroService.addRegistro(this.cliente);
+      this.spinnerService.hide();
       this.snackBar.open('Cliente agregado con éxito', 'Cerrar', {
         duration: 5000,
       });
       this.cliente = this.clientesService.nuevoCliente();
       setTimeout(() => window.location.reload(), 5000);
+      this.spinnerService.hide();
     } catch (error) {
       this.snackBar.open('Error al agregar el cliente', 'Cerrar', {
         duration: 5000,
