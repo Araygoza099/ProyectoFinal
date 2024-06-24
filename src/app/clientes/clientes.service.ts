@@ -45,6 +45,7 @@ export class ClientesService {
       nombre: '',
       apellido: '',
       telefono: '',
+      email:'',
       animal: {
         edad: 0,
         color: '',

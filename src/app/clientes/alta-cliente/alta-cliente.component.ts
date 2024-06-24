@@ -42,7 +42,7 @@ export class AltaClienteComponent implements OnInit{
   loading$ = this.spinnerService.loading$;
 
 
-  constructor(private clientesService: ClientesService,  private snackBar: MatSnackBar, private registroService: RegistrosService, private authService: AuthService, private spinnerService: SpinnerService){
+  constructor(private clientesService: ClientesService,  private snackBar: MatSnackBar, private registroService: RegistrosService, private authService: AuthService, private spinnerService: SpinnerService, private http: HttpClient){
     
   }
 
@@ -70,6 +70,8 @@ export class AltaClienteComponent implements OnInit{
       this.cliente.animal = this.animal;
       this.cliente.hora = this.horaSeleccionada;
       const response = await this.registroService.addRegistro(this.cliente);
+      this.sendEmail(this.cliente);
+
       this.spinnerService.hide();
       this.snackBar.open('Cliente agregado con éxito', 'Cerrar', {
         duration: 5000,
@@ -84,6 +86,23 @@ export class AltaClienteComponent implements OnInit{
       this.cliente = this.clientesService.nuevoCliente();
       setTimeout(() => window.location.reload(), 5000);
   }
+}
+sendEmail(cliente: Cliente) {
+  const emailData = {
+    subject: 'Nueva Cita Registrada',
+    //email: cliente.email, 
+    description: `Se ha registrado una nueva cita para ${cliente.nombre} ${cliente.apellido} con la fecha ${cliente.fecha} a las ${cliente.hora}:00 horas.`
+  };
+
+  this.http.post('http://localhost:3000/send-email', emailData)
+    .subscribe({
+      next: (response: any) => {
+        console.log('Email enviado', response);
+      },
+      error: (error: HttpErrorResponse) => {
+        console.error('Error al enviar el correo', error);
+      }
+    });
 }
 
 onDateChange(date: Date | undefined) {

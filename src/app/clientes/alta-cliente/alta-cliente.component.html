@@ -16,6 +16,10 @@
       <span>Teléfono:</span>
       <input type="text" class="form-control bg-secondary text-white" [(ngModel)]="cliente.telefono" name="telefono" required>
     </p>
+    <p>
+      <span>Correo:</span>
+      <input type="text" class="form-control bg-secondary text-white" [(ngModel)]="cliente.email" name="email" required>
+    </p>
 
     <p>
       <app-calendario (dateChange)="onDateChange($event)"></app-calendario>
