@@ -11,9 +11,6 @@
   
         
         <li class="nav-item">
-          <a class="nav-link" href="#" routerLink="/animales" routerLinkActive="active">Adopción</a>
-        </li>
-        <li class="nav-item">
           <a class="nav-link" href="#" routerLink="/acerca" routerLinkActive="active">Acerca</a>
         </li>
         <li class="nav-item">
@@ -23,6 +20,9 @@
           <a class="nav-link " href="#" routerLink="/donadores" routerLinkActive="active">Donadores</a>
         </li>
         <div *ngIf="authService.checkLoginStatus(); else loggedOut"  class="form-inline my-2 my-lg-0 search-container d-flex justify-content-end">
+          <li class="nav-item">
+            <a class="nav-link" href="#" routerLink="/animales" routerLinkActive="active">Adopción</a>
+          </li>
           <li class="nav-item"><span class="nav-link" >Bienvenido, {{ authService.getUsername() }} !!</span></li>
           <li class="nav-item" style="margin-right: 10px;"><button (click)="logout()" class="btn btn-outline-info">Logout</button></li>
           
