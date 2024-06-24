@@ -47,7 +47,7 @@ app.post('/send-email', (req, res) => {
         from: 'rics35dax@gmail.com',
         to: email,
         subject: subject,
-        text: `Recibimos su comentario el cual es: "${description}", se atendera lo antes posible.`
+        text: `Descripcion de los datos"${description}", reviselos a la brevedad, recuerde ser puntual.`
     };
 
     transporter.sendMail(mailOptions, (error, info) => {

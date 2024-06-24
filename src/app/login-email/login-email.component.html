@@ -16,6 +16,9 @@
             <button type="submit">Login</button>
         </fieldset>
     </form>
+    <div *ngIf="loading$ | async" class="loading-overlay">
+        <div class="spinner"></div>
+      </div>
 
     <!-- Alertas -->
     <div *ngIf="showSuccessAlert" class="alert alert-success">

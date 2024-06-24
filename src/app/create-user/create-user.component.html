@@ -42,6 +42,9 @@
 
         <button type="submit" class="p-button p-button-success">Crear Usuario</button>
     </form>
+    <div *ngIf="loading$ | async" class="loading-overlay">
+        <div class="spinner"></div>
+      </div>
 
     <!-- Alertas -->
     <div *ngIf="showPasswordMismatchAlert" class="alert alert-danger">
