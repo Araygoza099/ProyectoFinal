@@ -11,6 +11,7 @@ import { RegistrosService } from '../../registros.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { AuthService } from '../../auth.service';
 
 @Component({
   selector: 'app-alta-cliente',
@@ -24,7 +25,7 @@ export class AltaClienteComponent implements OnInit{
   cliente!: Cliente;
   @Input() animal: any;
 
-  uid: string = 'Krzp26cSgeTLP8DWSc8V49jxcSU2';
+  uid: string | null = null;
 
   horaSeleccionada: number = 0;
 
@@ -38,10 +39,21 @@ export class AltaClienteComponent implements OnInit{
   horasDeshabilitadas: number[] = [];
 
 
-  constructor(private clientesService: ClientesService,  private snackBar: MatSnackBar, private registroService: RegistrosService){
+  constructor(private clientesService: ClientesService,  private snackBar: MatSnackBar, private registroService: RegistrosService, private authService: AuthService){
+    
   }
 
   ngOnInit(){
+    this.authService.getUid().subscribe((uid) => {
+      if (uid) {
+        this.uid = uid;
+        this.cliente.uid = this.uid;
+        console.log('User UID:', this.uid);
+      } else {
+        console.log('No user is currently logged in.');
+      }
+    });
+
     this.cliente = this.clientesService.nuevoCliente();
     this.pastAppointments = this.generatePastAppointmentsReport();
     this.upcomingAppointments = this.generateUpcomingAppointmentsReport();
@@ -50,7 +62,6 @@ export class AltaClienteComponent implements OnInit{
 
   async nuevoCliente() {
     try {
-      this.cliente.uid = this.uid;
       this.cliente.animal = this.animal;
       this.cliente.hora = this.horaSeleccionada;
       const response = await this.registroService.addRegistro(this.cliente);
