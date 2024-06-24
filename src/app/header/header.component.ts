@@ -10,11 +10,12 @@ import { BusquedaService } from '../busqueda.service';
 import { RegisterComponent } from '../register/register.component';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../auth.service';
+import { GraficasComponent } from '../graficas/graficas.component';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [ RouterOutlet, HeaderComponent, HomeComponent, AcercaComponent, DonadoresComponent, TipsComponent, RouterModule, MatIconModule, AnimalesComponent, CommonModule],
+  imports: [ RouterOutlet, HeaderComponent, HomeComponent, GraficasComponent ,AcercaComponent, DonadoresComponent, TipsComponent, RouterModule, MatIconModule, AnimalesComponent, CommonModule],
   
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'

@@ -12,6 +12,7 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 })
 export class AuthService {
   private isLoggedIn = false;
+  private isAdmin = false;
   private username: string = '';
 
   constructor( private firebaseAuth: Auth) { }
@@ -71,6 +72,14 @@ export class AuthService {
       this.isLoggedIn = true;
     }
     return this.isLoggedIn;
+  }
+
+  checkAdmin(admin: string): boolean {
+    this.isAdmin = false;
+    if (admin === 'firebaseequipotw') { //Comprobar cuenta de administrador
+      this.isAdmin = true;
+    }
+    return this.isAdmin;
   }
 
 
