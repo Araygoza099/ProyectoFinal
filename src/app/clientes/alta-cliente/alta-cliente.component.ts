@@ -90,7 +90,7 @@ export class AltaClienteComponent implements OnInit{
 sendEmail(cliente: Cliente) {
   const emailData = {
     subject: 'Nueva Cita Registrada',
-    //email: cliente.email, 
+    email: cliente.email, 
     description: `Se ha registrado una nueva cita para ${cliente.nombre} ${cliente.apellido} con la fecha ${cliente.fecha} a las ${cliente.hora}:00 horas.`
   };
 
