@@ -1,24 +1,30 @@
 import { Component, Input } from '@angular/core';
 import { Cliente, Animal } from '../cliente.model';
 import { ClientesService } from '../clientes.service';
-import { FormsModule } from '@angular/forms';
+import { FormGroup, FormsModule, FormControl } from '@angular/forms';
 import { CalendarioComponent } from '../../calendario/calendario.component';
 import { RouterLink } from '@angular/router';
 import { UnanimalComponent } from '../../unanimal/unanimal.component';
 import { formatDate } from '@angular/common';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { RegistrosService } from '../../registros.service';
+import { ReactiveFormsModule } from '@angular/forms';
+import { OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-alta-cliente',
   standalone: true,
-  imports: [FormsModule, CalendarioComponent, RouterLink, UnanimalComponent], 
+  imports: [FormsModule, CalendarioComponent, RouterLink, UnanimalComponent, FormsModule, ReactiveFormsModule, CommonModule], 
   templateUrl: './alta-cliente.component.html',
   styleUrl: './alta-cliente.component.css'
 })
-export class AltaClienteComponent {
+export class AltaClienteComponent implements OnInit{
 
   cliente!: Cliente;
   @Input() animal: any;
+
+  uid: string = 'Krzp26cSgeTLP8DWSc8V49jxcSU2';
 
   horaSeleccionada: number = 0;
 
@@ -31,48 +37,52 @@ export class AltaClienteComponent {
 
   horasDeshabilitadas: number[] = [];
 
-  constructor(private clientesService: ClientesService,  private snackBar: MatSnackBar){}
+
+  constructor(private clientesService: ClientesService,  private snackBar: MatSnackBar, private registroService: RegistrosService){
+  }
 
   ngOnInit(){
     this.cliente = this.clientesService.nuevoCliente();
     this.pastAppointments = this.generatePastAppointmentsReport();
     this.upcomingAppointments = this.generateUpcomingAppointmentsReport();
+
   }
 
-  nuevoCliente(): void {
-    this.cliente.animal = this.animal;
-    this.cliente.hora = this.horaSeleccionada;
-    this.clientesService.agregarCliente(this.cliente);
-    const storedData = JSON.parse(localStorage.getItem('data') || '[]');
-    if (storedData.some((cliente: Cliente) => cliente.id === this.cliente.id)) {
+  async nuevoCliente() {
+    try {
+      this.cliente.uid = this.uid;
+      this.cliente.animal = this.animal;
+      this.cliente.hora = this.horaSeleccionada;
+      const response = await this.registroService.addRegistro(this.cliente);
       this.snackBar.open('Cliente agregado con éxito', 'Cerrar', {
         duration: 5000,
       });
-    } else {
+      this.cliente = this.clientesService.nuevoCliente();
+      setTimeout(() => window.location.reload(), 5000);
+    } catch (error) {
       this.snackBar.open('Error al agregar el cliente', 'Cerrar', {
         duration: 5000,
       });
-    }
-    this.cliente = this.clientesService.nuevoCliente();
-    setTimeout(() => window.location.reload(), 5000);
+      this.cliente = this.clientesService.nuevoCliente();
+      setTimeout(() => window.location.reload(), 5000);
   }
+}
 
-    onDateChange(date: Date | undefined) {
-      if (date) {
-        let aux:number = 0;
-        this.horasDeshabilitadas = [];
-        const storedData = JSON.parse(localStorage.getItem('data') || '[]');
-        let formattedDate = formatDate(date, 'yyyy-MM-dd', 'en-US');
-        for(let i = 0; i < storedData.length; i++){
-          if(storedData[i].fecha === formattedDate){
-            let hora : number = parseInt(storedData[i].hora, 10);
-            this.horasDeshabilitadas[aux] = hora;
-            aux++;
-          }
-        }
-        this.cliente.fecha = formattedDate;
-      }
-    }
+onDateChange(date: Date | undefined) {
+  if (date) {
+    this.horasDeshabilitadas = [];
+    let formattedDate = formatDate(date, 'yyyy-MM-dd', 'en-US');
+    
+    this.registroService.getRegistrosByFecha(formattedDate).subscribe((storedData) => {
+      storedData.forEach((data) => {
+        let hora: number = parseInt(data.hora, 10);
+        this.horasDeshabilitadas.push(hora);
+      });
+      this.cliente.fecha = formattedDate;
+    });
+  }
+}
+
 
     generatePastAppointmentsReport(): any[] {
       const currentDate = formatDate(new Date(), 'yyyy-MM-dd', 'en-US');

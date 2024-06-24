@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Auth, signInWithEmailAndPassword, createUserWithEmailAndPassword, RecaptchaVerifier,signInWithPhoneNumber } from '@angular/fire/auth';
+import { Auth, signInWithEmailAndPassword, createUserWithEmailAndPassword, RecaptchaVerifier,signInWithPhoneNumber, authState } from '@angular/fire/auth';
 import { Observable } from 'rxjs'
 import { from } from 'rxjs';
 import { FirebaseApp } from '@angular/fire/app';
@@ -11,10 +11,24 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
   providedIn: 'root'
 })
 export class AuthService {
+  private isLoggedIn = false;
+  private username: string = '';
 
   constructor( private firebaseAuth: Auth) { }
 
+  usrlog$ = authState(this.firebaseAuth);
+
   login(email: string, password: string): Observable<void> {
+    // Actualizar el campo de cuenta basado en el campo de correo electrónico
+    const emailParts = email.split('@');
+    if (emailParts.length > 0) {
+      this.username = emailParts[0]; // Asignar el nombre de usuario antes del dominio
+    } else {
+      this.username = email; // Usar el correo electrónico completo si no hay '@'
+    }
+    this.isLoggedIn = true;
+    sessionStorage.setItem('isLoggedIn', 'true');
+    sessionStorage.setItem('username', this.username);
     const promise = signInWithEmailAndPassword(this.firebaseAuth, email, password).then ( () => {});
     return from(promise);
   }
@@ -38,6 +52,27 @@ export class AuthService {
     const promise = createUserWithEmailAndPassword(this.firebaseAuth, email, password).then(() => {});
     return from(promise);
   }
+
+  logout(): void {
+    this.isLoggedIn = false;
+    this.username = '';
+    sessionStorage.removeItem('isLoggedIn');
+    sessionStorage.removeItem('username');
+  }
+
+  getUsername(): string {
+    return this.username;
+  }
+
+  checkLoginStatus(): boolean {
+    const loggedIn = sessionStorage.getItem('isLoggedIn');
+    if (loggedIn === 'true') {
+      this.username = sessionStorage.getItem('username') || '';
+      this.isLoggedIn = true;
+    }
+    return this.isLoggedIn;
+  }
+
 
   
 }

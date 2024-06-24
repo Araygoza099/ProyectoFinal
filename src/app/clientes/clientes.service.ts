@@ -38,7 +38,8 @@ export class ClientesService {
 
   nuevoCliente(){
     return {
-      id: this.clientes.length,
+      id: this.clientes.length.toString(),
+      uid: '',
       fecha: '',
       hora: 0,
       nombre: '',
@@ -50,7 +51,8 @@ export class ClientesService {
         raza: '',
         tiempo: '',
         comportamiento: '',
-        img: ''
+        img: '',
+        tipo: ''
       }
     }
   }
