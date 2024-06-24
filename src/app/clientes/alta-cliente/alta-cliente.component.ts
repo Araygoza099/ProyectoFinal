@@ -12,6 +12,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../../auth.service';
+import { SpinnerService } from '../../spinner.service';
+import { HttpClientModule,HttpClient,HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-alta-cliente',
@@ -37,9 +39,10 @@ export class AltaClienteComponent implements OnInit{
   upcomingAppointments: any[] = [];
 
   horasDeshabilitadas: number[] = [];
+  loading$ = this.spinnerService.loading$;
 
 
-  constructor(private clientesService: ClientesService,  private snackBar: MatSnackBar, private registroService: RegistrosService, private authService: AuthService){
+  constructor(private clientesService: ClientesService,  private snackBar: MatSnackBar, private registroService: RegistrosService, private authService: AuthService, private spinnerService: SpinnerService){
     
   }
 
@@ -59,6 +62,7 @@ export class AltaClienteComponent implements OnInit{
     this.upcomingAppointments = this.generateUpcomingAppointmentsReport();
 
   }
+  
 
   async nuevoCliente() {
     try {
@@ -108,4 +112,5 @@ onDateChange(date: Date | undefined) {
       const upcomingAppointments = storedData.filter((appointment: any) => appointment.fecha >= currentDate);
       return upcomingAppointments;
     }
+    
 }

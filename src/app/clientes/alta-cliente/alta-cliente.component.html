@@ -35,4 +35,8 @@
       <button type="submit" class="btn btn-primary bg-dark" [disabled]="!clienteForm.valid">Guardar</button>
     </p>
   </form>
+  <div *ngIf="loading$ | async" class="loading-overlay">
+    <div class="spinner"></div>
+  </div>
+  <p>Spinner</p>
 </div>
