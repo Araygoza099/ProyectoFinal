@@ -4,6 +4,7 @@ import { AnimalesComponent } from './animales/animales.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [AnimalesComponent],

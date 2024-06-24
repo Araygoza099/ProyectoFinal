@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Auth, signInWithEmailAndPassword, createUserWithEmailAndPassword, RecaptchaVerifier,signInWithPhoneNumber, authState } from '@angular/fire/auth';
+import { Auth, User, signInWithEmailAndPassword, createUserWithEmailAndPassword, RecaptchaVerifier,signInWithPhoneNumber, authState } from '@angular/fire/auth';
 import { Observable } from 'rxjs'
 import { from } from 'rxjs';
 import { FirebaseApp } from '@angular/fire/app';
@@ -59,6 +59,19 @@ export class AuthService {
     this.username = '';
     sessionStorage.removeItem('isLoggedIn');
     sessionStorage.removeItem('username');
+  }
+
+  getUid(): Observable<string | null> {
+    return new Observable((subscriber) => {
+      this.usrlog$.subscribe((user: User | null) => {
+        if (user) {
+          subscriber.next(user.uid);
+        } else {
+          subscriber.next(null);
+        }
+        subscriber.complete();
+      });
+    });
   }
 
   getUsername(): string {

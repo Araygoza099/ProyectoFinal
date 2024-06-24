@@ -7,11 +7,12 @@ import { DonadoresComponent } from './donadores/donadores.component';
 import { FooterComponent } from './footer/footer.component';
 import { TipsComponent } from './tips/tips.component';
 import {MatTableModule} from '@angular/material/table';
+import { LectorPantallaComponent } from './lector-pantalla/lector-pantalla.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [MatTableModule,RouterOutlet, HeaderComponent, HomeComponent, AcercaComponent, DonadoresComponent, TipsComponent, RouterModule, FooterComponent],
+  imports: [MatTableModule,RouterOutlet, HeaderComponent, HomeComponent, AcercaComponent, DonadoresComponent, TipsComponent, RouterModule, FooterComponent, LectorPantallaComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
