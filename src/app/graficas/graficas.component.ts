@@ -1,16 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Observable } from 'rxjs';
-import { Chart } from 'chart.js';
+import { Chart, ChartType } from 'chart.js/auto';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-graficas',
   standalone: true,
-  // imports: [],
+  imports: [CommonModule],
   templateUrl: './graficas.component.html',
-  styleUrl: './graficas.component.css'
+  styleUrls: ['./graficas.component.css']
 })
-export class GraficasComponent implements OnInit {
+export class GraficasComponent implements OnInit, AfterViewInit {
+  @ViewChild('myChart') myChart!: ElementRef<HTMLCanvasElement>;
   citas$: Observable<any[]>;
 
   constructor(private firestore: AngularFirestore) {
@@ -18,6 +20,10 @@ export class GraficasComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    // No generamos el gráfico aquí, lo haremos en ngAfterViewInit
+  }
+
+  ngAfterViewInit(): void {
     this.citas$.subscribe(citas => {
       const tipoAnimalData = this.calcularPorcentajeTipos(citas);
       this.generarGrafico(tipoAnimalData);
@@ -30,30 +36,38 @@ export class GraficasComponent implements OnInit {
       acc[tipo] = (acc[tipo] || 0) + 1;
       return acc;
     }, {});
-  
+
     const total = tipos.length;
     const porcentajes: { [key: string]: number } = {};
     for (const tipo in conteo) {
       porcentajes[tipo] = (conteo[tipo] / total) * 100;
     }
-  
+
     return porcentajes;
   }
 
   generarGrafico(data: { [key: string]: number }) {
-    const ctx = document.getElementById('myChart') as HTMLCanvasElement;
-    new Chart(ctx, {
-      type: 'pie',
-      data: {
-        labels: Object.keys(data),
-        datasets: [{
-          data: Object.values(data),
-          backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56']
-        }]
-      },
-      options: {
-        responsive: true
+    if (this.myChart) {
+      const ctx = this.myChart.nativeElement.getContext('2d');
+      if (ctx) {
+        new Chart(ctx, {
+          type: 'pie' as ChartType,
+          data: {
+            labels: Object.keys(data),
+            datasets: [{
+              data: Object.values(data),
+              backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56']
+            }]
+          },
+          options: {
+            responsive: true
+          }
+        });
+      } else {
+        console.error('Unable to get 2D context from canvas');
       }
-    });
+    } else {
+      console.error('Canvas element not found');
+    }
   }
 }

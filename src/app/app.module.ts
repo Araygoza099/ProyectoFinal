@@ -11,11 +11,12 @@ import { AcercaComponent } from './acerca/acerca.component';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { environment } from '../environments/environment';
+import { GraficasComponent } from './graficas/graficas.component';
 
 
 
 @NgModule({
-  declarations: [AnimalesComponent, AcercaComponent],
+  declarations: [AnimalesComponent, AcercaComponent, GraficasComponent],
   imports: [NgxMasonryModule, BrowserModule, AppRoutingModule, MatSnackBarModule, ReactiveFormsModule, AngularFireModule.initializeApp(environment.firebase), AngularFirestoreModule],
   bootstrap: [AppComponent]
 })

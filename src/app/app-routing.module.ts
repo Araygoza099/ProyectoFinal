@@ -14,6 +14,7 @@ import { CreateUserComponent } from './create-user/create-user.component';
 import { LoginEmailComponent } from './login-email/login-email.component';
 import { LoginPhoneComponent } from './login-phone/login-phone.component';
 import { RegisterComponent } from './register/register.component';
+import { GraficasComponent } from './graficas/graficas.component';
 
 const routes: Routes = [
   { path: 'animales', component: AnimalesComponent },
@@ -21,7 +22,8 @@ const routes: Routes = [
   { path: 'create-user', component: CreateUserComponent },
     { path: 'login-email', component: LoginEmailComponent },
     { path: 'login-phone', component: LoginPhoneComponent },
-    { path: 'register', component: RegisterComponent }
+    { path: 'register', component: RegisterComponent },
+    { path: 'graficas', component: GraficasComponent },
 
 
 ];

@@ -15,7 +15,7 @@ import { GraficasComponent } from '../graficas/graficas.component';
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [ RouterOutlet, HeaderComponent, HomeComponent, GraficasComponent ,AcercaComponent, DonadoresComponent, TipsComponent, RouterModule, MatIconModule, AnimalesComponent, CommonModule],
+  imports: [ RouterOutlet, HeaderComponent, HomeComponent, GraficasComponent , AcercaComponent, DonadoresComponent, TipsComponent, RouterModule, MatIconModule, AnimalesComponent, CommonModule],
   
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'
