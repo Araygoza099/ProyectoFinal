@@ -1,72 +1,34 @@
-.custom-navbar {
-    background-color: #18708c; /* Color de fondo original */
-    padding: 10px 0; /* Ajuste de padding para un aspecto más uniforme */
-    color: #ffffff; /* Color del texto */
-}
-
-.navbar-brand img {
-    height: auto;
-    max-width: 200px; /* Tamaño del logo ajustado */
-}
-.navbar-nav{
-    margin-right: 20px;
-}
-
-.nav-link {
-    color: #ffffff; /* Color de texto para los enlaces */
-    font-size: 16px; /* Tamaño de fuente más grande para mejor visibilidad */
-}
-
-.search-bar {
-    display: flex;
-    align-items: center;
-}
-
-.search-bar .form-control {
+.navbar-collapse {
+    background-color: #ffffff;
+  }
+  
+  .navbar-nav .nav-link {
+    font-weight:400;
+    color:white;
+  }
+  
+  .navbar-nav .nav-link:hover {
+    color: #18708c;
+  }
+  
+  .navbar-toggler {
     border-color: #ffffff;
-    background-color: transparent;
-    color: #ffffff;
-}
-
-.search-bar{
-    border-color: #ffffff;
-    color: #ffffff;
-}
-
-.search-bar .form-control:focus {
-    color: #ffffff;
-    background-color: #18708c;
-    border-color: #ffffff;
-}
-
-.btn-custom-logout, .btn-custom-login {
-    color: #ffffff;
-    background-color: transparent;
-    border: 1px solid #ffffff; /* Borde blanco para los botones */
-    margin-left: 10px; /* Espaciado entre botones */
-}
-
-.btn-custom-logout:hover, .btn-custom-login:hover {
-    background-color: #ffffff; /* Cambio de fondo al hacer hover */
-    color: #18708c; /* Cambio de color de texto al hacer hover */
-}
-
-.navbar-collapse{
-    margin-right: 20px;
-}
-
-@media (max-width: 991px) {
-    .navbar-nav {
-        margin-top: 10px;
-        width: 100%;
-        text-align: center;
+  }
+  
+  .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba%28255, 255, 255, 1%29' stroke-width='2' linecap='round' linejoin='round' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+  }
+  
+  .navbar-collapse .form-control,
+  .navbar-collapse .btn {
+    border-color: #000000;
+  }
+  
+  @media (min-width: 992px) {
+    .navbar-collapse {
+      background-color: transparent;
     }
-    .search-bar, .btn-custom-logout, .btn-custom-login {
-        width: 100%;
-        margin-bottom: 10px;
-        justify-content: center;
-    }
-}
-
+  }
+  
 
 
