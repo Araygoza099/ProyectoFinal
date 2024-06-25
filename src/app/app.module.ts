@@ -5,10 +5,19 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
+import { AppComponent } from './app.component';
+import { AcercaComponent } from './acerca/acerca.component';
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { environment } from '../environments/environment';
+import { EstadisticasComponent } from './estadisticas/estadisticas.component';
+import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
+import { getFirestore, provideFirestore } from '@angular/firebase/firestore';
 
 @NgModule({
-  declarations: [AnimalesComponent],
-  imports: [NgxMasonryModule, BrowserModule, AppRoutingModule, MatSnackBarModule],
+  declarations: [AnimalesComponent, AcercaComponent, EstadisticasComponent],
+  imports: [ NgxMasonryModule, BrowserModule, AppRoutingModule, MatSnackBarModule, ReactiveFormsModule, AngularFireModule.initializeApp(environment.firebase), AngularFirestoreModule, provideFirebaseApp(() => initializeApp(environment.firebase)), provideFirestore(() => getFirestore())],
 
 })
 export class AppModule { }

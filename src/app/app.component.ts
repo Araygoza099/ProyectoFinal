@@ -8,11 +8,12 @@ import { FooterComponent } from './footer/footer.component';
 import { TipsComponent } from './tips/tips.component';
 import {MatTableModule} from '@angular/material/table';
 import { LectorPantallaComponent } from './lector-pantalla/lector-pantalla.component';
+import { EstadisticasComponent } from './estadisticas/estadisticas.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [MatTableModule,RouterOutlet, HeaderComponent, HomeComponent, AcercaComponent, DonadoresComponent, TipsComponent, RouterModule, FooterComponent, LectorPantallaComponent],
+  imports: [MatTableModule,RouterOutlet, HeaderComponent, HomeComponent, AcercaComponent, DonadoresComponent, TipsComponent, RouterModule, FooterComponent, LectorPantallaComponent, EstadisticasComponent ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
