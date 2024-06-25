@@ -8,10 +8,15 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { AcercaComponent } from './acerca/acerca.component';
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { environment } from '../environments/environment';
+
+
 
 @NgModule({
   declarations: [AnimalesComponent, AcercaComponent],
-  imports: [NgxMasonryModule, BrowserModule, AppRoutingModule, MatSnackBarModule, ReactiveFormsModule],
+  imports: [NgxMasonryModule, BrowserModule, AppRoutingModule, MatSnackBarModule, ReactiveFormsModule, AngularFireModule.initializeApp(environment.firebase), AngularFirestoreModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
