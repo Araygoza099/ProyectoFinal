@@ -3,6 +3,8 @@ import { FormsModule, NgForm } from '@angular/forms';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { SpinnerService } from '../spinner.service';
+import { HttpClient,HttpErrorResponse,HttpClientModule } from '@angular/common/http';
 
 
 
@@ -25,10 +27,13 @@ export class CreateUserComponent {
   showPasswordMismatchAlert: boolean = false;
   showFirebaseErrorAlert: boolean = false;
   showSignUpSuccessAlert: boolean = false;
+  loading$ = this.spinnerService.loading$;
 
-  constructor(private authService: AuthService, private router: Router) { }
+
+  constructor(private authService: AuthService, private router: Router, private spinnerService: SpinnerService) { }
 
   signUp() {
+    this.spinnerService.show();
     // Validación de coincidencia de contraseñas
     if (this.password !== this.confirmPassword) {
       this.showPasswordMismatchAlert = true;
@@ -51,11 +56,13 @@ export class CreateUserComponent {
           this.confirmPassword = '';
           // Esperar 3 segundos antes de redirigir
           setTimeout(() => {
+            this.spinnerService.hide();
             this.router.navigate(['/login-email']); // Ejemplo de ruta a la página de login
           }, 3000); // Tiempo en milisegundos (3 segundos)
         },
         error: (error) => {
           // Error al registrar usuario
+          this.spinnerService.hide();
           this.showFirebaseErrorAlert = true;
           console.error('Error signing up:', error);
         }

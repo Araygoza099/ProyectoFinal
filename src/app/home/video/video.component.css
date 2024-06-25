@@ -4,3 +4,11 @@
     border-radius: 50px;
 
 }
+
+.alert{
+    margin-top: 20px;
+    width: 50%;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}

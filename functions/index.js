@@ -17,3 +17,48 @@ const logger = require("firebase-functions/logger");
 //   logger.info("Hello logs!", {structuredData: true});
 //   response.send("Hello from Firebase!");
 // });
+const express = require('express');
+const nodemailer = require('nodemailer');
+const bodyParser = require('body-parser');
+const cors = require('cors');
+
+const app = express();
+const port = 3000;
+
+app.use(bodyParser.json());
+app.use(cors());
+
+let transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+        user: 'rics35dax@gmail.com',
+        pass: 'fjic hmfi aorr hegw'
+    }
+});
+
+app.post('/send-email', (req, res) => {
+    const { subject, email, description } = req.body;
+
+    console.log(`Subject: ${subject}`);
+    console.log(`Email: ${email}`);
+    console.log(`Description: ${description}`);
+
+    let mailOptions = {
+        from: 'rics35dax@gmail.com',
+        to: email,
+        subject: subject,
+        text: `Descripcion de los datos"${description}", reviselos a la brevedad, recuerde ser puntual.`
+    };
+
+    transporter.sendMail(mailOptions, (error, info) => {
+        if (error) {
+            console.error('Error al enviar el correo:', error);
+            return res.status(500).send(error.toString());
+        }
+        res.status(200).json({ message: 'Correo enviado: ' + info.response });
+    });
+});
+
+app.listen(port, () => {
+    console.log(`Servidor corriendo en http://localhost:${port}/`);
+});

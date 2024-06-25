@@ -9,22 +9,28 @@ import { AnimalesComponent } from '../animales/animales.component';
 import { BusquedaService } from '../busqueda.service';
 import { RegisterComponent } from '../register/register.component';
 import { CommonModule } from '@angular/common';
+import { AuthService } from '../auth.service';
+import { GraficasComponent } from '../graficas/graficas.component';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [ RouterOutlet, HeaderComponent, HomeComponent, AcercaComponent, DonadoresComponent, TipsComponent, RouterModule, MatIconModule, AnimalesComponent, CommonModule],
+  imports: [ RouterOutlet, HeaderComponent, HomeComponent, GraficasComponent ,AcercaComponent, DonadoresComponent, TipsComponent, RouterModule, MatIconModule, AnimalesComponent, CommonModule],
   
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'
 })
 
 export class HeaderComponent {
-  constructor(private router: Router, private busquedaService: BusquedaService) { }
+  constructor(public authService: AuthService, private router: Router, private busquedaService: BusquedaService) { }
 
   nombreBusqueda(nombre: string) {
     this.busquedaService.cambiarNombre(nombre);
     this.router.navigate(['/buscador', nombre]);
+  }
+  logout(): void {
+    this.authService.logout();
+    this.router.navigate(['/']);
   }
 
   colorBase = '#18708c';
