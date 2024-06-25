@@ -15,6 +15,8 @@ import { LoginEmailComponent } from './login-email/login-email.component';
 import { LoginPhoneComponent } from './login-phone/login-phone.component';
 import { RegisterComponent } from './register/register.component';
 import { EstadisticasComponent } from './estadisticas/estadisticas.component';
+import { ContactoComponent } from './contacto/contacto.component';
+import { FaqComponent } from './faq/faq.component';
 
 const routes: Routes = [
   { path: 'animales', component: AnimalesComponent },
@@ -24,6 +26,8 @@ const routes: Routes = [
     { path: 'login-phone', component: LoginPhoneComponent },
     { path: 'register', component: RegisterComponent },
     { path: 'estadisticas', component: EstadisticasComponent },
+    { path: 'contacto', component: ContactoComponent },
+    {path: 'faq', component: FaqComponent},
 
 
 ];

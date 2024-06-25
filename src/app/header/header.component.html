@@ -13,10 +13,16 @@
           <a class="nav-link" href="#" routerLink="/acerca" routerLinkActive="active">Acerca</a>
         </li>
         <li class="nav-item">
+          <a class="nav-link" href="#" routerLink="/contacto" routerLinkActive="active">Contacto</a>
+        </li>
+        <li class="nav-item">
           <a class="nav-link" href="#" routerLink="/tips" routerLinkActive="active">Tips</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#" routerLink="/donadores" routerLinkActive="active">Donadores</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" routerLink="/faq" routerLinkActive="active">FAQ</a>
         </li>
         <ng-container *ngIf="authService.checkLoginStatus(); else loggedOut">
           <li class="nav-item">
@@ -49,4 +55,4 @@
   </div>
 </nav>
 
- 
+<router-outlet></router-outlet> 

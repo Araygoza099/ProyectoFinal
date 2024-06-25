@@ -11,11 +11,13 @@ import { RegisterComponent } from '../register/register.component';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../auth.service';
 import { EstadisticasComponent } from '../estadisticas/estadisticas.component';
+import { ContactoComponent } from '../contacto/contacto.component';
+import { FaqComponent } from '../faq/faq.component';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [ RouterOutlet, HeaderComponent, HomeComponent, EstadisticasComponent , AcercaComponent, DonadoresComponent, TipsComponent, RouterModule, MatIconModule, AnimalesComponent, CommonModule],
+  imports: [ RouterOutlet, HeaderComponent, HomeComponent, EstadisticasComponent , AcercaComponent, DonadoresComponent, TipsComponent, RouterModule, MatIconModule, AnimalesComponent, CommonModule, ContactoComponent, FaqComponent],
   
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'

@@ -7,6 +7,8 @@ import { DonadoresComponent } from '../donadores/donadores.component';
 import { HomeComponent } from '../home/home.component';
 import { TipsComponent } from '../tips/tips.component';
 import { EstadisticasComponent } from '../estadisticas/estadisticas.component';
+import { ContactoComponent } from '../contacto/contacto.component';
+import { FaqComponent } from '../faq/faq.component';
 
 export const routes: Routes = [
     
@@ -15,5 +17,7 @@ export const routes: Routes = [
     {path: 'tips', component: TipsComponent},
     {path: 'donadores', component: DonadoresComponent},
     {path: 'estadisticas', component: EstadisticasComponent},
+    {path: 'contacto', component: ContactoComponent},
+    {path: 'faq', component: FaqComponent},
 
 ];

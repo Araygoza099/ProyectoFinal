@@ -14,9 +14,11 @@ import { environment } from '../environments/environment';
 import { EstadisticasComponent } from './estadisticas/estadisticas.component';
 import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
 import { getFirestore, provideFirestore } from '@angular/firebase/firestore';
+import { ContactoComponent } from './contacto/contacto.component';
+import { FaqComponent } from './faq/faq.component';
 
 @NgModule({
-  declarations: [AnimalesComponent, AcercaComponent, EstadisticasComponent],
+  declarations: [AnimalesComponent, AcercaComponent, EstadisticasComponent, ContactoComponent, FaqComponent],
   imports: [ NgxMasonryModule, BrowserModule, AppRoutingModule, MatSnackBarModule, ReactiveFormsModule, AngularFireModule.initializeApp(environment.firebase), AngularFirestoreModule, provideFirebaseApp(() => initializeApp(environment.firebase)), provideFirestore(() => getFirestore())],
 
 })

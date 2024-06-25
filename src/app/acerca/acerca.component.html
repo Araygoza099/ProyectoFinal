@@ -93,21 +93,6 @@
   </div>
 </div>
 
-<div class="container my-5 form-container">
-  <h3>Contáctanos</h3>
-  <form [formGroup]="contactoForm" (ngSubmit)="onSubmit()">
-    <div class="mb-3">
-      <label for="email" class="form-label">Correo electrónico</label>
-      <input type="email" id="email" class="form-control" formControlName="email">
-      <div *ngIf="contactoForm.controls['email'].invalid && (contactoForm.controls['email'].dirty || contactoForm.controls['email'].touched)" class="text-danger">
-        <div *ngIf="contactoForm.controls['email'].errors?.['required']">El correo electrónico es obligatorio.</div>
-        <div *ngIf="contactoForm.controls['email'].errors?.['email']">El formato del correo no es válido.</div>
-      </div>
-    </div>
-    <button type="submit" class="btn btn-primary" [disabled]="contactoForm.invalid">Enviar</button>
-  </form>
-</div>
-
 <div class="university-project">
   <h4>Proyecto Universitario</h4>
   <p>Esta página web ha sido desarrollada como parte de un proyecto de la asignatura "Tecnologías Web" en la Universidad Autónoma de Aguascalientes.</p>
