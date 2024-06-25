@@ -11,13 +11,13 @@ import { AcercaComponent } from './acerca/acerca.component';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { environment } from '../environments/environment';
-import { GraficasComponent } from './graficas/graficas.component';
-
-
+import { EstadisticasComponent } from './estadisticas/estadisticas.component';
+import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
+import { getFirestore, provideFirestore } from '@angular/firebase/firestore';
 
 @NgModule({
-  declarations: [AnimalesComponent, AcercaComponent, GraficasComponent],
-  imports: [NgxMasonryModule, BrowserModule, AppRoutingModule, MatSnackBarModule, ReactiveFormsModule, AngularFireModule.initializeApp(environment.firebase), AngularFirestoreModule],
-  bootstrap: [AppComponent]
+  declarations: [AnimalesComponent, AcercaComponent, EstadisticasComponent],
+  imports: [ NgxMasonryModule, BrowserModule, AppRoutingModule, MatSnackBarModule, ReactiveFormsModule, AngularFireModule.initializeApp(environment.firebase), AngularFirestoreModule, provideFirebaseApp(() => initializeApp(environment.firebase)), provideFirestore(() => getFirestore())],
+
 })
 export class AppModule { }
