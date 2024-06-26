@@ -60,6 +60,7 @@ export class LoginEmailComponent {
         },
         error: (error: any) => {
           this.spinnerService.hide();
+          this.auth.logout();
           console.error('Error:', error);
           if (error.code === 'auth/user-not-found' || error.code === 'auth/wrong-password') {
             this.showErrorAlert = true;

@@ -20,6 +20,7 @@ export class AuthService {
   usrlog$ = authState(this.firebaseAuth);
 
   login(email: string, password: string): Observable<void> {
+
     // Actualizar el campo de cuenta basado en el campo de correo electrónico
     const emailParts = email.split('@');
     if (emailParts.length > 0) {
