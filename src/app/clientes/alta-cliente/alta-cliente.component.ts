@@ -14,6 +14,7 @@ import { CommonModule } from '@angular/common';
 import { AuthService } from '../../auth.service';
 import { SpinnerService } from '../../spinner.service';
 import { HttpClientModule,HttpClient,HttpErrorResponse } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-alta-cliente',
@@ -42,7 +43,9 @@ export class AltaClienteComponent implements OnInit{
   loading$ = this.spinnerService.loading$;
 
 
-  constructor(private clientesService: ClientesService,  private snackBar: MatSnackBar, private registroService: RegistrosService, private authService: AuthService, private spinnerService: SpinnerService, private http: HttpClient){
+  constructor(private clientesService: ClientesService,  private snackBar: MatSnackBar,
+     private registroService: RegistrosService, private authService: AuthService, private spinnerService: SpinnerService,
+      private http: HttpClient, private router: Router){
     
   }
 
@@ -65,28 +68,29 @@ export class AltaClienteComponent implements OnInit{
   
 
   async nuevoCliente() {
-    this.spinnerService.show();
-    try {
-      this.cliente.animal = this.animal;
-      this.cliente.hora = this.horaSeleccionada;
-      const response = await this.registroService.addRegistro(this.cliente);
-      this.sendEmail(this.cliente);
+      this.spinnerService.show();
+      try {
+        this.cliente.animal = this.animal;
+        this.cliente.hora = this.horaSeleccionada;
+        const response = await this.registroService.addRegistro(this.cliente);
+        this.sendEmail(this.cliente);
 
-      this.spinnerService.hide();
-      this.snackBar.open('Cliente agregado con éxito', 'Cerrar', {
-        duration: 5000,
-      });
-      this.cliente = this.clientesService.nuevoCliente();
-      setTimeout(() => window.location.reload(), 5000);
-      this.spinnerService.hide();
-    } catch (error) {
-      this.snackBar.open('Error al agregar el cliente', 'Cerrar', {
-        duration: 5000,
-      });
-      this.cliente = this.clientesService.nuevoCliente();
-      setTimeout(() => window.location.reload(), 5000);
+        this.spinnerService.hide();
+        this.snackBar.open('Cliente agregado con éxito', 'Cerrar', {
+          duration: 5000,
+        });
+        this.cliente = this.clientesService.nuevoCliente();
+        //setTimeout(() => window.location.reload(), 5000);
+        setTimeout(() => this.router.navigate(["/animales"]));
+        this.spinnerService.hide();
+      } catch (error) {
+        this.snackBar.open('Error al agregar el cliente', 'Cerrar', {
+          duration: 5000,
+        });
+    }
   }
-}
+
+
 sendEmail(cliente: Cliente) {
   const emailData = {
     subject: 'Nueva Cita Registrada',

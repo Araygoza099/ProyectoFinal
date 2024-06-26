@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormGroup, Validators, FormBuilder } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-contacto',
@@ -12,17 +13,26 @@ import { ReactiveFormsModule, FormGroup, Validators, FormBuilder } from '@angula
 export class ContactoComponent {
   contactoForm: FormGroup;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private http: HttpClient) {
     this.contactoForm = this.fb.group({
-      email: ['', [Validators.required, Validators.email]],
+      email: ['', [Validators.required, Validators.email]]
     });
   }
 
+  ngOnInit(): void {}
+
   onSubmit() {
     if (this.contactoForm.valid) {
-      console.log('Formulario válido', this.contactoForm.value);
-    } else {
-      console.log('Formulario inválido');
-    }
-  }
+      const formData = this.contactoForm.value;
+      this.http.post<{ message: string }>('http://localhost:3000/send-email1', formData).subscribe(
+        response => {
+          console.log('Email sent successfully', response);
+        },
+        error => {
+          console.error('Error sending email', error);
+        }
+      );
+    }
+  }
+
 }
