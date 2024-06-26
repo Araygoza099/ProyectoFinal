@@ -1,0 +1,72 @@
+h2 {
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .accordion {
+    width: 100%;
+    max-width: 600px;
+    margin: 20px auto;
+    border: 1px solid #c5cae9;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .accordion-header {
+    background-color: #3f51b5;
+    color: #fff;
+    cursor: pointer;
+    padding: 15px;
+    border-radius: 5px 5px 0 0;
+    font-family: Arial, sans-serif;
+    text-align: center;
+  }
+  
+  .accordion-content {
+    display: none;
+    background-color: #e8eaf6;
+    border-top: 1px solid #c5cae9;
+    padding: 20px;
+  }
+  
+  div.appointment {
+    background-color: #fff;
+    border: 1px solid #c5cae9;
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  div.appointment p {
+    margin: 0 0 10px;
+    line-height: 1.5;
+    font-family: Arial, sans-serif;
+    color: #3f51b5;
+  }
+  
+  div.appointment p:last-child {
+    margin-bottom: 0;
+  }
+  
+  .container {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  button.btn {
+    background-color: #f44336;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: Arial, sans-serif;
+  }
+  
+  button.btn:hover {
+    background-color: #d32f2f;
+  }
+  

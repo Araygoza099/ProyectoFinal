@@ -19,7 +19,7 @@
 </div>
 <br>
 <div class="container">
-<h2>Reporte de citas pasadas</h2>
+<h2>Citas pasadas</h2>
 <div class="appointment" *ngFor="let appointment of pastAppointments">
   Fecha: {{ appointment.fecha }}<br>
   Hora: {{ appointment.hora }}<br>
@@ -37,7 +37,7 @@
   <div style="display: flex; justify-content: center;"><button class="btn btn-danger" (click)="deleteRegistro(appointment.id)">Borrar</button></div>
 </div>
 
-<h2>Reporte de citas próximas</h2>
+<h2>Citas próximas</h2>
 <div class="appointment" *ngFor="let appointment of upcomingAppointments">
   Fecha: {{ appointment.fecha }}<br>
   Hora: {{ appointment.hora }}<br>

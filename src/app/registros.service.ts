@@ -15,9 +15,9 @@ export class RegistrosService {
     return addDoc(registroRef, cliente);
   }
 
-  getRegistro(): Observable<Cliente[]>{
+  getRegistros(): Observable<any[]> {
     const registroRef = collection(this.firestore, 'citas');
-    return collectionData(registroRef, { idField: 'id' }) as Observable<Cliente[]>;
+    return collectionData(registroRef, { idField: 'id' }) as Observable<any[]>;
   }
 
   deleteRegistro(id: string){

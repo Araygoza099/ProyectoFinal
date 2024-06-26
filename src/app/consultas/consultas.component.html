@@ -1,0 +1,82 @@
+<div class="centered-content">
+    <div class="container">
+      <div class="accordion">
+        <div class="accordion-header" (click)="toggleAccordion('past')">
+          <h2>Citas pasadas</h2>
+        </div>
+        <div class="accordion-content" id="past-content">
+          <div class="appointment" *ngFor="let appointment of pastAppointments">
+            <p>Fecha: {{ appointment.fecha }}</p>
+            <p>Hora: {{ appointment.hora }}</p>
+            <p>Nombre: {{ appointment.nombre }}</p>
+            <p>Apellido: {{ appointment.apellido }}</p>
+            <p>Teléfono: {{ appointment.telefono }}</p>
+            <p>Correo: {{ appointment.email }}</p>
+            <p>Animal:</p>
+            <p>Edad: {{ appointment.animal.edad }}</p>
+            <p>Color: {{ appointment.animal.color }}</p>
+            <p>Raza: {{ appointment.animal.raza }}</p>
+            <p>Tiempo en el refugio: {{ appointment.animal.tiempo }}</p>
+            <p>Comportamiento: {{ appointment.animal.comportamiento }}</p>
+            <p>Tipo: {{ appointment.animal.tipo }}</p>
+            <div style="display: flex; justify-content: center;">
+              <button class="btn btn-danger" (click)="deleteRegistro(appointment.id)">Borrar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <div class="accordion">
+        <div class="accordion-header" (click)="toggleAccordion('today')">
+          <h2>Citas de hoy</h2>
+        </div>
+        <div class="accordion-content" id="today-content">
+          <div class="appointment" *ngFor="let appointment of todayAppointments">
+            <p>Fecha: {{ appointment.fecha }}</p>
+            <p>Hora: {{ appointment.hora }}</p>
+            <p>Nombre: {{ appointment.nombre }}</p>
+            <p>Apellido: {{ appointment.apellido }}</p>
+            <p>Teléfono: {{ appointment.telefono }}</p>
+            <p>Correo: {{ appointment.email }}</p>
+            <p>Animal:</p>
+            <p>Edad: {{ appointment.animal.edad }}</p>
+            <p>Color: {{ appointment.animal.color }}</p>
+            <p>Raza: {{ appointment.animal.raza }}</p>
+            <p>Tiempo en el refugio: {{ appointment.animal.tiempo }}</p>
+            <p>Comportamiento: {{ appointment.animal.comportamiento }}</p>
+            <p>Tipo: {{ appointment.animal.tipo }}</p>
+            <div style="display: flex; justify-content: center;">
+              <button class="btn btn-danger" (click)="deleteRegistro(appointment.id)">Borrar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <div class="accordion">
+        <div class="accordion-header" (click)="toggleAccordion('upcoming')">
+          <h2>Citas próximas</h2>
+        </div>
+        <div class="accordion-content" id="upcoming-content">
+          <div class="appointment" *ngFor="let appointment of upcomingAppointments">
+            <p>Fecha: {{ appointment.fecha }}</p>
+            <p>Hora: {{ appointment.hora }}</p>
+            <p>Nombre: {{ appointment.nombre }}</p>
+            <p>Apellido: {{ appointment.apellido }}</p>
+            <p>Teléfono: {{ appointment.telefono }}</p>
+            <p>Correo: {{ appointment.email }}</p>
+            <p>Animal:</p>
+            <p>Edad: {{ appointment.animal.edad }}</p>
+            <p>Color: {{ appointment.animal.color }}</p>
+            <p>Raza: {{ appointment.animal.raza }}</p>
+            <p>Tiempo en el refugio: {{ appointment.animal.tiempo }}</p>
+            <p>Comportamiento: {{ appointment.animal.comportamiento }}</p>
+            <p>Tipo: {{ appointment.animal.tipo }}</p>
+            <div style="display: flex; justify-content: center;">
+              <button class="btn btn-danger" (click)="deleteRegistro(appointment.id)">Borrar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

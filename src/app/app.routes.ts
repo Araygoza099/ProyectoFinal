@@ -14,7 +14,7 @@ import { EstadisticasComponent } from './estadisticas/estadisticas.component';
 import { ContactoComponent } from './contacto/contacto.component';
 import { FaqComponent } from './faq/faq.component';
 import { BusquedaComponent } from './busqueda/busqueda.component';
-
+import { ConsultasComponent } from './consultas/consultas.component';
 
 export const routes: Routes = [
     {path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -32,6 +32,7 @@ export const routes: Routes = [
     { path: 'estadisticas', component: EstadisticasComponent },
     { path: 'contacto', component: ContactoComponent},
     { path: 'faq', component: FaqComponent},
-    {path: 'busqueda/:animalh', component: BusquedaComponent}
+    {path: 'busqueda/:animalh', component: BusquedaComponent},
+    {path: 'consultas', component: ConsultasComponent}
 
 ]
