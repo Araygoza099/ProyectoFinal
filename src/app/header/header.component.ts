@@ -26,10 +26,11 @@ import { FaqComponent } from '../faq/faq.component';
 export class HeaderComponent {
   constructor(public authService: AuthService, private router: Router, private busquedaService: BusquedaService) { }
 
-  nombreBusqueda(nombre: string) {
-    this.busquedaService.cambiarNombre(nombre);
-    this.router.navigate(['/buscador', nombre]);
+  buscarAnimal(nombre:string){
+    console.log(nombre);
+    this.router.navigate(['/busqueda', nombre]);
   }
+
   logout(): void {
     this.authService.logout();
     this.router.navigate(['/']);

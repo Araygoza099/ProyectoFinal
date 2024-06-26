@@ -1,0 +1,27 @@
+@if(indice == -1){
+    <br><br><br>
+    <div class="alert alert-danger" role="alert">
+        <h4 class="alert-heading">ERROR DE BUSQUDA!</h4>
+        <p>ERROR ERROR ERROR</p>
+        <hr>
+        <p class="mb-0">Whenever you need to, be sure to use margin utilities to keep things nice and tidy.</p>
+      </div>
+
+}@else {
+    <br>
+    <div class="card-group row row-cols-1 row-cols-lg-3 g-4">
+        <div class="col">
+          <div class="card h-100">
+            <img [src]="miAnimal.img" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">{{miAnimal.raza}}</h5>
+              <p class="card-text">{{miAnimal.color}}</p>
+              <p class="card-text">{{miAnimal.comportamiento}}</p>
+              <p class="card-text"><small class="text-muted">{{miAnimal.tiempo}}</small></p>
+            </div>
+            <a [routerLink]="['/animal', indice]" class="mb-3 btn btn-outline-primary btn-block">Agendar Cita para adopción</a>
+          </div>
+        </div>
+        <br>
+    </div>
+}

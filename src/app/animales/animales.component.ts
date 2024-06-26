@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input} from '@angular/core';
 import { Animal } from '../animal';
 import { AnimalService } from '../shared/animal.service';
-import { RouterLink } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { formatDate } from '@angular/common';
 import { CommonModule } from '@angular/common';
 import { RegistrosService } from '../registros.service';
@@ -17,6 +17,7 @@ import { AuthService } from '../auth.service';
 })
 export class AnimalesComponent implements OnInit {
 
+  
   misAnimales: Animal[] = [];
   pastAppointments: any[] = [];
   upcomingAppointments: any[] = [];
@@ -25,7 +26,9 @@ export class AnimalesComponent implements OnInit {
 
   uid: string | null = null;
 
-  constructor(public miservicio: AnimalService, private registroService: RegistrosService, private authService: AuthService) {}
+  constructor(public miservicio: AnimalService, private registroService: RegistrosService, private authService: AuthService, public activatedRoute: ActivatedRoute) {
+
+  }
 
   ngOnInit(): void {
     this.authService.getUid().subscribe((uid) => {
